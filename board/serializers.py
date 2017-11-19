@@ -39,7 +39,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Task
-		fields = ('id','name','description','sprint','status','order','assigned','started','due','completed','links',)
+		fields = ('id','name','description','sprint','status','status_display','order','assigned','started','due','completed','links',)
 
 	def get_status_display(self,obj):
 		return obj.get_status_display()

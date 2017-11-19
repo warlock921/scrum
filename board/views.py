@@ -29,12 +29,13 @@ class SprintViewSet(viewsets.ModelViewSet):
 class TaskViewSet(DefaultsMixin, viewsets.ModelViewSet):
 	"""列出和创建任务时的API视图"""
 	queryset = Task.objects.all()
-	serializers_class = TaskSerializer
+	serializer_class = TaskSerializer
 
-class UserViewSet(object):
+class UserViewSet(DefaultsMixin, viewsets.ReadOnlyModelViewSet):
 	"""列出用户时的API视图"""
 
 	lookup_field = User.USERNAME_FIELD
+	lookup_url_kwarg = User.USERNAME_FIELD
 	queryset = User.objects.order_by(User.USERNAME_FIELD)
 	serializer_class = UserSerializer
 		
