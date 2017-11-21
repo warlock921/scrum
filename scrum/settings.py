@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     #这里开始安装第三方apps
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     #我们自己创建的apps
     'board',
 
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,6 +78,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'scrum.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
