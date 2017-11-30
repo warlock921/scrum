@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Scrum Board</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script type="text/html" id="home-template">
+	<h1>Welcome to my Scrum Board Project!</h1>
+</script>
+<script type="text/html" id="login-template">
+	<form action="" method="post">
+		<label for='id_username'>用户名：</label>
+		<input id='id_username' type="text" name="username" maxlength="30" required />
+		<label for="id_password">密码：</label>
+		<input id="id_password" type="password" name="password" required />
+		<button type="submit">登录</button>
+	</form>
+</script>
+<script type="text/html" id="header-template">
+	<span class="title">登录实例</span>
+	<% if (authenticated){ %>
+		<nav>
+			<a href="/" class="button">你的API</a>
+			<a href="#" class="logout button">登出</a>
+		</nav>
+	<% } %>
+</script>
+</head>
+<body>
+	<div id="content"></div>
+
+	<script type="text/javascript" src="{%  static 'board/vendor/jquery-3.2.1.js' %}"></script>
+	<script type="text/javascript" src="{%  static 'board/vendor/underscore.js' %}"></script>
+	<script type="text/javascript" src="{%  static 'board/vendor/backbone.js' %}"></script>
+	<script type="text/json" id="config">
+	{
+		"models":{},
+		"collections":{},
+		"views":{},
+		"router":null,
+		"apiRoot":"{% url 'api-root' %}",
+		"apiLogin":"{% url 'api-token' %}"
+	}
+	</script>
+	<script type="text/javascript" src="{%  static 'board/js/app.js' %}"></script>
+	<script type="text/javascript" src="{%  static 'board/js/models.js' %}"></script>
+	<script type="text/javascript" src="{%  static 'board/js/router.js' %}"></script>
+	<script type="text/javascript" src="{%  static 'board/js/views.js' %}"></script>
+</body>
+</html>
